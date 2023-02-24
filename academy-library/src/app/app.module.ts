@@ -10,6 +10,8 @@ import { CategoryComponent } from './components/category/category.component';
 import { AcademyLibraryLogoComponent } from './academy-library-logo/academy-library-logo.component';
 import { CategoryListComponent } from './category-list/category-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { BookListComponent } from './book-list/book-list.component';
+import { BookSearchComponent } from './book-search/book-search.component';
 
 export const APP_TITLE = new InjectionToken<string>('title');
 
@@ -26,6 +28,8 @@ export const APP_TITLE = new InjectionToken<string>('title');
     CategoryComponent,
     AcademyLibraryLogoComponent,
     CategoryListComponent,
+    BookListComponent,
+    BookSearchComponent,
 
   ],
   providers: [

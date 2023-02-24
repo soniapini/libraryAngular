@@ -20,34 +20,26 @@ export class AppComponent {
   bookCategoriesTitle: string = '';
   currentBook: Book | undefined;
   newCategory: string | undefined;
+  _books: Array<Book> = [];
 
 
-  constructor(@Inject(APP_TITLE) title: string, 
+  constructor(@Inject(APP_TITLE) title: string,
   readonly categoryClient: CategoriesService, //DI
   readonly bookClient: BooksService) {
     this.title = title;
-    this.bookClient.getMessages().subscribe((books) => console.log("messaggi per category", books));
+    this.bookClient.getUncategoryzedBooks().subscribe((books) => console.log("messaggi per category", books));
 
   }
 
   ngOnInit(): void {
-    // // TODO load data from services (or backend);
     this.loadCategories();
     this.loadCustomCategories();
-     
-    // this.defaultFolderId = 1;
-    // this.customFolderId = 0;
-    //
-    // this.customFolders = this.loadCustomFolders();
-    //
-    // this.messages = this.loadMessages();
-    // this.clearCurrentMessage();
-    //
-    // this.defaultQuery = 'js';
   }
 
   _onSelectCategory(selectedCategory: Category) {
     console.log("Recuperare i libri appartenente alla categoria: ", selectedCategory.description);
+    this.bookClient.getBooks(selectedCategory)
+    .subscribe((books) => this._books = books);
   }
 
   _onAddCategory(newCategory: Category) {
@@ -59,6 +51,23 @@ export class AppComponent {
       },
       () => console.error("Errore durante il salvataggio di una category")
       );
+  }
+
+  _onSearchBook(value: string) {
+    console.log("ricerca libro ", value);
+
+    const filterdBooks = this._books
+    .filter(
+      (book) => {return book.title.includes(value)}
+    );
+    console.log("Libri filtrati", filterdBooks);
+
+    this.bookClient.searchBooks(value)
+    .subscribe((books) => console.log("Libri filtrati sul SERVER", books)
+    );
+
+    // const book = this._books.find(book => book.title === value);
+
   }
 
   private loadCustomCategories() {

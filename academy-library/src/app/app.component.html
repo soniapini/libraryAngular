@@ -1,12 +1,16 @@
 <div class="page-container">
 
   <header class="horizontal-container">
-   <ea-academy-library-logo></ea-academy-library-logo>
+    <ea-academy-library-logo></ea-academy-library-logo>
 
-<!--    <nis-message-search class="horizontal-center"-->
-<!--                        [defaultQuery]="defaultQuery"-->
-<!--                        (searchAction)="search($event)">-->
-<!--    </nis-message-search>-->
+    <ea-book-search class="horizontal-center"
+    (searchBook)="_onSearchBook($event)">
+
+    </ea-book-search>
+    <!--    <nis-message-search class="horizontal-center"-->
+    <!--                        [defaultQuery]="defaultQuery"-->
+    <!--                        (searchAction)="search($event)">-->
+    <!--    </nis-message-search>-->
 
   </header>
 
@@ -17,60 +21,33 @@
       </section>
 
       <section class="folder-list">
-        <ea-category-list title="Categorie"
-                          [categories]="_categories"
-                          [allowCreate]="false"
-                          (selectCategory)="_onSelectCategory($event)">
+        <ea-category-list title="Categorie" 
+        [categories]="_categories" [allowCreate]="false"
+        [selectFirstCategory]="true"
+          (selectCategory)="_onSelectCategory($event)">
         </ea-category-list>
 
-        <ea-category-list title="Categorie Custom"
-                          [categories]="_customCategories"
-                          [allowCreate]="true"
-                          (addCategory)="_onAddCategory($event)">
+        <ea-category-list title="Categorie Custom" [categories]="_customCategories" [allowCreate]="true"
+          (selectCategory)="_onSelectCategory($event)"
+          (addCategory)="_onAddCategory($event)">
         </ea-category-list>
-
-<!--        <nis-folder-list-->
-<!--          title="Custom Folders"-->
-<!--          [folders]="customFolders | async"-->
-<!--          [defaultFolder]="customFolderId"-->
-<!--          (selectedFolder)="loadMessagesForSelectedCustomFolder($event)"-->
-<!--          (addFolder)="addFolder($event)"-->
-<!--          [allowCreate]="true">-->
-<!--        </nis-folder-list>-->
       </section>
 
     </nav>
 
-<!--    <section class="mail-composer horizontal-center" *ngIf="composerActive">-->
-<!--      <nis-message-composer-->
-<!--        [draft]="draft"-->
-<!--        (saveMail)="updateDraft($event)"-->
-<!--        (sendMail)="send($event)"-->
-<!--        (cancelMail)="closeComposer()">-->
+    <section class="horizontal-center vertical-container">
+      <ea-book-list [books]="_books"></ea-book-list>
 
-<!--      </nis-message-composer>-->
-<!--    </section>-->
+      <hr>
+      <!--      </div>-->
 
-
-<!--    <section class="horizontal-center vertical-container" *ngIf="!!messages">-->
-<!--      <nis-message-list-->
-<!--        [title]="messageListTitle"-->
-<!--        [messages]="messages | async"-->
-<!--        (currentMessageChanged)="selectCurrentMessage($event)">-->
-<!--      </nis-message-list>-->
-
-<!--      <div class="spacer">-->
-
-<!--        <hr>-->
-<!--      </div>-->
-
-<!--      <nis-message-viewer-->
-<!--        [message]="currentMessage"-->
-<!--        (reply)="replyTo($event)"-->
-<!--        (forward)="forward($event)"-->
-<!--        (delete)="delete($event)">-->
-<!--      </nis-message-viewer>-->
-<!--    </section>-->
+      <!--      <nis-message-viewer-->
+      <!--        [message]="currentMessage"-->
+      <!--        (reply)="replyTo($event)"-->
+      <!--        (forward)="forward($event)"-->
+      <!--        (delete)="delete($event)">-->
+      <!--      </nis-message-viewer>-->
+    </section>
 
   </section>
 

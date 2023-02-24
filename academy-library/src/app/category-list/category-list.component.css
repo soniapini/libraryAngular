@@ -5,3 +5,8 @@
 .ultima-riga {
     margin-bottom: 15px;
 }
+
+.selected-category {
+    font-weight: bold;
+    color:darkblue;
+}
