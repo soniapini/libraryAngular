@@ -36,7 +36,6 @@ export class CategoryListComponent implements OnInit {
   addCustomCategory() {
     console.log("aggiunta nuova categria ", this.newCategory);
     const customCategory: Category = {
-      id: 1111,
       description: this.newCategory,
       type: CategoryType.CUSTOM
     };

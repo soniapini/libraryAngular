@@ -1,9 +1,10 @@
 export interface Book {
-  id: number;
+  id?: number;
   title: string;
   author: string;
   description: string;
   pages: string;
   date?: Date;
   category?: number;
+  starred?: boolean
 }

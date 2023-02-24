@@ -21,8 +21,8 @@ export class CategoriesService {
     return this.getCategories(CategoryType.CUSTOM);
   }
 
-  addNewCategory(category: Category): void {
-    this.http.post<any>("https://63f32ecefe3b595e2edc5d43.mockapi.io/api/v1/categories", category);
+  addNewCategory(category: Category): Observable<Category> {
+    return this.http.post<Category>("https://63f32ecefe3b595e2edc5d43.mockapi.io/api/v1/categories", category);
   }
 
   private getCategories(type: CategoryType) {

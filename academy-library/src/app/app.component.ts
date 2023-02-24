@@ -51,16 +51,14 @@ export class AppComponent {
   }
 
   _onAddCategory(newCategory: Category) {
-    this.categoryClient.addNewCategory(newCategory);
-  }
-
-  addCustomCategory() {
-    const newCategory: Category = {
-      id: 4,
-      description: this.newCategory || '',
-      type: CategoryType.CUSTOM
-    }
-    this._customCategories.push(newCategory);
+    this.categoryClient.addNewCategory(newCategory)
+    .subscribe(
+      (category) => {
+        console.log("Aggiunta la nuova category ", newCategory);
+        this._customCategories.push(category);
+      },
+      () => console.error("Errore durante il salvataggio di una category")
+      );
   }
 
   private loadCustomCategories() {
