@@ -1,0 +1,9 @@
+<h3>{{title}}</h3>
+<div *ngFor="let category of categories; index as i; even as pari; last as ultimo" [ngClass]="{'ultima-riga': ultimo}">
+    {{i}} - <span (click)="onCategoryClick(i)">{{category.description}}</span>
+</div>
+
+<section *ngIf="allowCreate === true">
+    <input type="text" [(ngModel)]="newCategory" />
+    <button type="button" (click)="addCustomCategory()" [disabled]="!newCategory">+</button>
+</section>
