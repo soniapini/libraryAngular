@@ -1,0 +1,82 @@
+<div class="page-container">
+
+  <header class="horizontal-container">
+   <ea-academy-library-logo></ea-academy-library-logo>
+
+<!--    <nis-message-search class="horizontal-center"-->
+<!--                        [defaultQuery]="defaultQuery"-->
+<!--                        (searchAction)="search($event)">-->
+<!--    </nis-message-search>-->
+
+  </header>
+
+  <section class="page-center horizontal-container">
+    <nav class="page-left-menu">
+      <section class="compose-toolbar">
+        <button (click)="compose()">Insert Book</button>
+      </section>
+
+      <section class="folder-list">
+        <ea-category-list title="Categorie"
+                          [categories]="_categories"
+                          [allowCreate]="false"
+                          (selectCategory)="_onSelectCategory($event)">
+        </ea-category-list>
+
+        <ea-category-list title="Categorie Custom"
+                          [categories]="_customCategories"
+                          [allowCreate]="true"
+                          (addCategory)="_onAddCategory($event)">
+        </ea-category-list>
+
+<!--        <nis-folder-list-->
+<!--          title="Custom Folders"-->
+<!--          [folders]="customFolders | async"-->
+<!--          [defaultFolder]="customFolderId"-->
+<!--          (selectedFolder)="loadMessagesForSelectedCustomFolder($event)"-->
+<!--          (addFolder)="addFolder($event)"-->
+<!--          [allowCreate]="true">-->
+<!--        </nis-folder-list>-->
+      </section>
+
+    </nav>
+
+<!--    <section class="mail-composer horizontal-center" *ngIf="composerActive">-->
+<!--      <nis-message-composer-->
+<!--        [draft]="draft"-->
+<!--        (saveMail)="updateDraft($event)"-->
+<!--        (sendMail)="send($event)"-->
+<!--        (cancelMail)="closeComposer()">-->
+
+<!--      </nis-message-composer>-->
+<!--    </section>-->
+
+
+<!--    <section class="horizontal-center vertical-container" *ngIf="!!messages">-->
+<!--      <nis-message-list-->
+<!--        [title]="messageListTitle"-->
+<!--        [messages]="messages | async"-->
+<!--        (currentMessageChanged)="selectCurrentMessage($event)">-->
+<!--      </nis-message-list>-->
+
+<!--      <div class="spacer">-->
+
+<!--        <hr>-->
+<!--      </div>-->
+
+<!--      <nis-message-viewer-->
+<!--        [message]="currentMessage"-->
+<!--        (reply)="replyTo($event)"-->
+<!--        (forward)="forward($event)"-->
+<!--        (delete)="delete($event)">-->
+<!--      </nis-message-viewer>-->
+<!--    </section>-->
+
+  </section>
+
+  <footer>
+    <div class="center-block">
+      powered by Angular 15 and <a href="http://www.dgsspa.com">DGS S.p.A.</a>
+    </div>
+  </footer>
+</div>
